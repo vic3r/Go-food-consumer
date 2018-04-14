@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package go.proto.food;
+
+service FoodService { 
+    rpc CreateDish(Dish) returns (ResponseDish) {}
+}
+
+message Dish {
+    string id = 1;
+    string description = 2;
+    int32 price = 3;
+    int32 quanity = 4;
+}
+
+message ResponseDish() {
+    bool created = 1;
+}
