@@ -1,0 +1,1 @@
+protoc --proto_path=$GOPATH/src:. --go_out=plugins=grpc:. ./src/Go-food-consumer/food-service/proto/food/food.proto
