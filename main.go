@@ -14,17 +14,20 @@ const (
 	port = ":50051"
 )
 
+//IOrderDish is an interface which defines the future dishes that will be created
 type IOrderDish interface {
 	CreateDish(*pb.Dish) (*pb.ResponseDish, error)
 }
 
+//OrderDish array with different dishes
 type OrderDish struct {
-	order []*pb.Dish
+	orders []*pb.Dish
 }
 
+//Create create a new dish and append it to the defined struct
 func (dish *OrderDish) Create(newDish *pb.Dish) (*pb.Dish, error) {
-	updated := append(dish.order, newDish)
-	dish.order = updated
+	updated := append(dish.orders, newDish)
+	dish.orders = updated
 	return newDish, nil
 }
 
@@ -54,6 +57,6 @@ func main() {
 
 	reflection.Register(s)
 	if err := s.Serve(listener); err != nil {
-		log.Fatal("failed to serve: %v".err)
+		log.Fatal("failed to serve: %v", err)
 	}
 }
